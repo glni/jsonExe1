@@ -7,20 +7,25 @@
 *
 * */
 
-
 $(document).ready(function (){
 
-    //Array with JSON logged in console
-    console.log(articles);
+    //Get the JSON data with an AJAX call
+    $.ajax({
+        dataType: "json",
+        url: "js/data.json"
+    }).done(function (data) {
 
-    //Loop through articles with .each()
-    $(articles).each(function(i){
+        //Loop through the data with .each()
+        $(data).each(function(i){
 
-        //Print the titles from the JSON data
-        $("section").append(articles[i].title + "<br>");
+            //Print the titles from the JSON data
+            $("section").append(data[i].title + "<br>");
 
+        });
 
     });
+
+
 
 });
 
